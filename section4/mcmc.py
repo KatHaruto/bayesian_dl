@@ -169,5 +169,5 @@ for i, ax in enumerate(axs):
     ax.plot(acc[:,0],acc[:,1],linewidth=1,linestyle="dashed",marker="o",markersize=3)
     if not rej is None: 
         ax.plot(rej[:,0],rej[:,1],c='r',linewidth=0.3,linestyle="dashed",marker="o",markersize=3)
-
+plt.savefig("./result_mcmc.png")
 plt.show()

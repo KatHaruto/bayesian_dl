@@ -75,4 +75,5 @@ plt.scatter(x_added, y_added, color='black', marker='o')
 
 plt.legend(ncol=2)
 plt.ylim(-3,3)
+plt.savefig("./result_blr.png")
 plt.show()
