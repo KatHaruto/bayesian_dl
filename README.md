@@ -1,5 +1,5 @@
 # bayesian_dl
-implementation 'bayesian deep learning' in python
+implementation 'bayesian deep learning' in python from scratch using NumPy
 
 ## Bayesian Linear Regression 
 This model can be updated sequentially.
@@ -11,4 +11,7 @@ This model can be updated sequentially.
 - Hamiltonian Monte Carlo method
 - Gibbs sampling
 
-result_mcmc.png![result_mcmc](https://user-images.githubusercontent.com/74958594/124243411-d3af0600-db58-11eb-8369-717d673acf6c.png)
+Blue dots are adopted.
+Red dots are rejected.
+
+![result_mcmc](https://user-images.githubusercontent.com/74958594/124243411-d3af0600-db58-11eb-8369-717d673acf6c.png)
