@@ -20,12 +20,13 @@ Red dots are rejected.
 Application of Assumed Density Filtering to Binary Classification by Probit Model.
 
 In moment matching, the posterior distribution of parameters is updated sequentially. 
-This GIF image shows the classification results for each parameter update.
- - Red points are **negative** examples that were **correctl**y  classified
- - Blue points are **negative** examples that **failed** to be classified 
- - Green points are **positive** examples that were **correctly** classified
- - Yellow points are **positive** examples that **failed** to be classified
 
-Classification fails at first, but succeeds as learning progresses.
-![result_moment_matching](https://user-images.githubusercontent.com/74958594/126166765-5ba49f3f-b122-4376-b58c-8a39c4d3e296.gif)
+The image shows the boundaries of the classification at each update of the parameters.
+(On this boundary, the value of the  cumulative distribution function of the standard normal distribution will be 0.5)
+
+![the boundaries of the classification](https://user-images.githubusercontent.com/74958594/126290607-f6af1190-cfcf-4a75-8a66-72eb2b143989.gif)
+
+This image similarly shows the boundaries where the classification probabilities are 50% 95% and 99%
+![the boundaries of the classification](https://user-images.githubusercontent.com/74958594/126291202-36a5f0f7-22a7-405c-a6f1-edf85be4e3d0.png)
+
 
