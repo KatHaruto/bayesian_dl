@@ -1,6 +1,7 @@
 # bayesian_dl
 implementation of the book 'Bayesian Deep Learning' in python from scratch using NumPy
-numpyから「ベイズ深層学習」実装
+
+Numpyから「ベイズ深層学習」の実装
 
 ## Bayesian Linear Regression 
 This model can be updated sequentially.
