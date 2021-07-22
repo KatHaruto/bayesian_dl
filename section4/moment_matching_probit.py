@@ -31,7 +31,7 @@ class MomentMatchingProbit():
     def __init__(self):
         self.likelihood = []
         self.mu = np.array([0,0,0])
-        self.v = np.array([[1000,0,0],[0,1000,0],[0,0,1000]])
+        self.v = np.array([[1,0,0],[0,1,0],[0,0,1]])
         self.mus= []
         self.vs= []
     def calc_Z(self,x,y):
@@ -95,7 +95,7 @@ pb.fit(X,Y)
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ani = FuncAnimation(fig,animate,frames=np.linspace(0, len(X)-1, 10, dtype=int),interval=1000)
-ani.save("./section4/result_moment_matching.gif",writer='pillow')
+ani.save("./result_moment_matching.gif",writer='pillow')
 
 fig = plt.figure()
 ax2 = fig.add_subplot(111)
@@ -121,4 +121,4 @@ for i,lam in enumerate([0,1.96,2.32]):
     data, _ = pli[0].get_points()
     data = np.array([(x_int.mid, y_int.mid) for x_int, y_int in data])
     ax2.scatter(data[:,0],data[:,1],s=0.1,c=color[i],alpha=0.1)
-plt.savefig("./section4/result_moment_matching.png")
+plt.savefig("./result_moment_matching.png")
