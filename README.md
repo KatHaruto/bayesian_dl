@@ -18,8 +18,8 @@ Red dots are rejected.
 
 ![result_mcmc](https://user-images.githubusercontent.com/74958594/124243411-d3af0600-db58-11eb-8369-717d673acf6c.png)
 
-## Moment Matching and Assumed Density Filtering
-Application of Assumed Density Filtering to Binary Classification by Probit Model.
+## Moment Matching, Assumed Density Filtering and Expectation Propagation
+Application of Assumed Density Filtering and Expectation Propagation to Binary Classification by Probit Model.
 
 In moment matching, the posterior distribution of parameters is updated sequentially. 
 
@@ -30,5 +30,7 @@ The image shows the boundaries of the classification at each update of the param
 
 This image similarly shows the boundaries where the classification probabilities are 50% 95% and 99%
 ![the boundaries of the classification](https://user-images.githubusercontent.com/74958594/126291202-36a5f0f7-22a7-405c-a6f1-edf85be4e3d0.png)
+
+
 
 
