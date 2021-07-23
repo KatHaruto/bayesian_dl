@@ -9,10 +9,10 @@ from sympy import symbols,plot_implicit,Eq
 
 
 def generate_data(neg_size,pos_size):
-    mean_1 = np.array([4, 1])
+    mean_1 = np.array([2, 1])
     cov_1 = np.array([[1, 0], [0, 1]])
 
-    mean_2 = np.array([-2, -1])
+    mean_2 = np.array([2, 1])
     cov_2 = np.array([[1, 0], [0, 1]])
     # numpy を用いた生成
     data_1 = np.array([np.hstack(([1],d)) for d in np.random.multivariate_normal(mean_1, cov_1, size=neg_size)])
@@ -20,6 +20,7 @@ def generate_data(neg_size,pos_size):
 
     X = np.concatenate([data_1,data_2])
     Y = np.concatenate([-1*np.ones(neg_size),np.ones(pos_size)])
+    #return X,Y
     #学習順序による影響を確認
     p = list(zip(X,Y))
     np.random.shuffle(p)
@@ -31,7 +32,7 @@ class MomentMatchingProbit():
     def __init__(self):
         self.likelihood = []
         self.mu = np.array([0,0,0])
-        self.v = np.array([[1,0,0],[0,1,0],[0,0,1]])
+        self.v = np.array([[10000,0,0],[0,10000,0],[0,0,10000]])
         self.mus= []
         self.vs= []
     def calc_Z(self,x,y):
@@ -42,6 +43,7 @@ class MomentMatchingProbit():
         return (1/Z) * norm.pdf(a) * (y*x / np.sqrt(1+np.sum(np.dot(self.v,x**2))+1e-6))
     def calc_dln_Z_dv(self,a,Z,x,y):
         # retun vector [dlnZ / dv1, dlnZ / dv2, ... ] (v1,v2... = diag(V))
+
         return (1/Z) * norm.pdf(a) * a* (-(x**2)/(2*(1+np.sum(np.dot(self.v,x**2)))))
     def update_mu(self,x,y):
         a,Z = self.calc_Z(x,y)
@@ -72,6 +74,12 @@ class MomentMatchingProbit():
     def calc_likelihood(self,X,Y):
         return np.sum([np.log(norm.cdf(Y[i]*np.dot(self.mu,X[i]))+1e-6) for i in range(len(X))])
 
+    def predict(self,X):
+        X = np.hstack(([1],X)) 
+        print(X)
+        return norm.cdf([np.dot(self.mu - np.sqrt(np.diag(self.v)),X),np.dot(self.mu + np.sqrt(np.diag(self.v)),X)])
+
+
 def animate(i):
 
     ax.scatter(draw_x1[:,1],draw_x1[:,2],color='r')
@@ -92,6 +100,7 @@ draw_x2 = np.array([list(x) for x,y in zip(X,Y) if y == 1])
 pb = MomentMatchingProbit()
 
 pb.fit(X,Y)
+print(pb.predict([1,0]))
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ani = FuncAnimation(fig,animate,frames=np.linspace(0, len(X)-1, 10, dtype=int),interval=1000)
@@ -103,7 +112,8 @@ ax2.scatter(draw_x1[:,1],draw_x1[:,2],color='r')
 ax2.scatter(draw_x2[:,1],draw_x2[:,2],color='b')
 
 mu,v = list(zip(pb.mus,pb.vs))[-1]
-print(mu,v)
+print(mu)
+print(v)
 ax2.set_xlim(int(min(X[:,1]))-1,int(max(X[:,1]))+1)
 ax2.set_ylim(int(min(X[:,2]))-1,int(max(X[:,2]))+1)
 color = ['black','yellow','green']
