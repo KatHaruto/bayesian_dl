@@ -21,7 +21,7 @@ Red dots are rejected.
 ## Moment Matching, Assumed Density Filtering and Expectation Propagation
 Application of Assumed Density Filtering and Expectation Propagation to Binary Classification by Probit Model.
 
-In detail, see https://qiita.com/tr-author/items/9ff85ff87f388e230ec4 in Japanese.
+refer https://qiita.com/tr-author/items/9ff85ff87f388e230ec4 for detail, in Japanese.
 
 In moment matching, the posterior distribution of parameters is updated sequentially. 
 
