@@ -32,7 +32,3 @@ The image shows the boundaries of the classification at each update of the param
 
 This image similarly shows the boundaries where the classification probabilities are 50% 95% and 99%
 ![the boundaries of the classification](https://user-images.githubusercontent.com/74958594/126291202-36a5f0f7-22a7-405c-a6f1-edf85be4e3d0.png)
-
-
-
-
